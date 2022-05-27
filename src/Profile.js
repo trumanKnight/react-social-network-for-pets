@@ -24,6 +24,13 @@ export class Profile extends React.Component {
     componentWillUnmount() {
         cancelFetch(this.fetchID);
     }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.username !== prevProps.username){
+            cancelFetch(this.fetchID);
+            this.loadUserData();
+        }
+    }
     
     render() {
         const isLoading = this.state.userData === null ? true : false;
@@ -48,7 +55,7 @@ export class Profile extends React.Component {
                 <h3>@{this.props.username}</h3>
                 <p>{this.bio}</p>
                 <h3>{this.friends}</h3>
-                <Userlist usernames={[]} onChoose={this.props.onChoose} />
+                <Userlist usernames={this.friends} onChoose={this.props.onChoose} />
             </div>
         </div>
         );
