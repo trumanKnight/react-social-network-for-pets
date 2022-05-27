@@ -24,6 +24,10 @@ export class Profile extends React.Component {
       className += ' loading';
     }
 
+    this.componentDidMount(){
+        this.loadUserData();
+    }
+
     return (
       <div className={className}>
         <div className="profile-picture"></div>
