@@ -16,16 +16,17 @@ export class Profile extends React.Component {
                 this.setState({ userData });
         });
     }
-  render() {
-    const isLoading = true;
 
-    let className = 'Profile';
-    if (isLoading) {
-      className += ' loading';
-    }
-
-    this.componentDidMount(){
+    componentDidMount() {
         this.loadUserData();
+    }
+    
+    render() {
+        const isLoading = true;
+
+        let className = 'Profile';
+        if (isLoading) {
+        className += ' loading';
     }
 
     return (
