@@ -28,20 +28,23 @@ export class Profile extends React.Component {
             className += ' loading';
             this.name = 'Loading...';
             this.bio = 'Loading...';
+            this.friends = [];
         } else {
             this.name = this.state.userData.name;
             this.bio = this.state.userData.bio;
+            this.friends = this.state.userData.friends;
         }
 
         return (
         <div className={className}>
             <div className="profile-picture"></div>
             <div className="profile-body">
-            <h2>{this.name}</h2>
-            <h3>@{this.props.username}</h3>
-            <p>{this.bio}</p>
-            <h3>My friends</h3>
-            <Userlist usernames={[]} onChoose={this.props.onChoose} />
+                <img src={isLoading ? 'Loading...' : this.state.userData.profilePictureUrl} alt="" />
+                <h2>{this.name}</h2>
+                <h3>@{this.props.username}</h3>
+                <p>{this.bio}</p>
+                <h3>{this.friends}</h3>
+                <Userlist usernames={[]} onChoose={this.props.onChoose} />
             </div>
         </div>
         );
