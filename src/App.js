@@ -1,4 +1,6 @@
 import React from 'react';
+import { Profile } from './Profile';
+import { Directory } from './Directory';
 import './App.css';
 
 class Application extends React.Component {
