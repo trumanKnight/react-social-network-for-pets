@@ -22,24 +22,26 @@ export class Profile extends React.Component {
     }
     
     render() {
-        const isLoading = true;
-
+        const isLoading = this.state.userData === null ? true : false;
         let className = 'Profile';
         if (isLoading) {
-        className += ' loading';
-    }
+            className += ' loading';
+            this.name = 'Loading...';
+        } else {
+            this.name = this.state.userData.name;
+        }
 
-    return (
-      <div className={className}>
-        <div className="profile-picture"></div>
-        <div className="profile-body">
-          <h2>Name goes here</h2>
-          <h3>@{this.props.username}</h3>
-          <p>Bio goes here</p>
-          <h3>My friends</h3>
-          <Userlist usernames={[]} onChoose={this.props.onChoose} />
+        return (
+        <div className={className}>
+            <div className="profile-picture"></div>
+            <div className="profile-body">
+            <h2>{this.name}</h2>
+            <h3>@{this.props.username}</h3>
+            <p>Bio goes here</p>
+            <h3>My friends</h3>
+            <Userlist usernames={[]} onChoose={this.props.onChoose} />
+            </div>
         </div>
-      </div>
-    );
-  }
+        );
+    }
 }
